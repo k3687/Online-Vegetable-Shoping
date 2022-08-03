@@ -1,9 +1,9 @@
-package com.Online_Vegetable_Shopping.dao;
+package com.onlinevegetableshopping.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.Online_Vegetable_Shopping.model.Admin;
+import com.online_vegetable_shopping.model.Admin;
 
 @Repository
 public interface AdminRepository extends JpaRepository<Admin, Integer>{

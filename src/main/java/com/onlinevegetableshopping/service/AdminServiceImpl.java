@@ -1,10 +1,10 @@
-package com.Online_Vegetable_Shopping.service;
+package com.onlinevegetableshopping.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.Online_Vegetable_Shopping.dao.AdminRepository;
+import com.online_vegetable_shopping.dao.AdminRepository;
 
 
 public class AdminServiceImpl implements AdminService{

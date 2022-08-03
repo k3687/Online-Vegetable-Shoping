@@ -1,4 +1,4 @@
-package com.Online_Vegetable_Shopping.service;
+package com.onlinevegetableshopping.service;
 
 import java.util.List;
 

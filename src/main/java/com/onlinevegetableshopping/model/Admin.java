@@ -1,4 +1,4 @@
-package com.Online_Vegetable_Shopping.model;
+package com.onlinevegetableshopping.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -1,4 +1,4 @@
-package com.Online_Vegetable_Shopping.controller;
+package com.onlinevegetableshopping.controller;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.Online_Vegetable_Shopping.service.AdminService;
+import com.online_vegetable_shopping.service.AdminService;
 
 @RestController
 @RequestMapping("/admin")
@@ -19,7 +19,7 @@ public class AdminController {
 	
 	public ResponseEntity<List<User>> getAllUserlist()
 	{
-		
+		System.out.println("All user");
 	}
 	
 	
