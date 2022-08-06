@@ -4,23 +4,108 @@ import java.util.List;
 
 import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.online_vegetable_shopping.service.AdminService;
+import com.onlinevegetableshopping.model.FeedBack;
+import com.onlinevegetableshopping.model.Order;
+import com.onlinevegetableshopping.model.RaiseComplaint;
+import com.onlinevegetableshopping.model.Vegetable;
+import com.onlinevegetableshopping.service.AdminService;
 
 @RestController
 @RequestMapping("/admin")
 public class AdminController {
 	
 	@Autowired
-	private AdminService adServ;
+	private AdminService adServe;
 	
-	public ResponseEntity<List<User>> getAllUserlist()
+	//http://localhost:8091/onlinevegetableshopping/admin/addveg
+	
+	@PostMapping("/addveg")  
+	public ResponseEntity<Vegetable> addveg(@RequestBody Vegetable vegetable)
 	{
-		System.out.println("All user");
+	adServe.addVegetables(vegetable);
+		return new ResponseEntity("vegetable added",HttpStatus.OK);
+		
 	}
+	
+	//http://localhost:8091/onlinevegetableshopping/admin/deleteById/
+
+	@DeleteMapping("/deleteById/{id}") 	public ResponseEntity<Vegetable> deleteVegById(@PathVariable("id") Integer id)
+	{
+		adServe.deleteVegetables(id);
+		return new ResponseEntity("Vegetable Deleted",HttpStatus.OK);
+		
+	}
+
+	//http://localhost:8091/onlinevegetableshopping/admin/update/
+	
+	@PutMapping("/update") 
+	public ResponseEntity<Vegetable> updateVegetable(@RequestBody Vegetable vegetable)
+	{
+		Vegetable updateveg = adServe.updateVegetables(vegetable);
+		
+		return new ResponseEntity("Vegetable updated successfully",HttpStatus.OK);
+		
+	}
+	
+	//http://localhost:8091/onlinevegetableshopping/admin/allveg
+	
+	@GetMapping("/allveg") 
+	public ResponseEntity<List<Vegetable>> getAllVegetable()
+	{
+		List<Vegetable> vegList = adServe.getAllVegtable();
+		if (vegList.isEmpty()) {
+			return new ResponseEntity("Sorry no vegetable list found!", HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<List<Vegetable>>(vegList,HttpStatus.OK);
+		
+	}
+	
+	//http://localhost:8091/onlinevegetableshopping/admin/viewallraise
+	
+	@GetMapping("/viewallraise")
+	public ResponseEntity<List<RaiseComplaint>> viewCompliant()
+	{
+		List<RaiseComplaint> raisecomp = adServe.viewComplaints();
+		return new ResponseEntity<List<RaiseComplaint>>(raisecomp, HttpStatus.OK);
+		
+	}
+	
+	//http://localhost:8091/onlinevegetableshopping/admin/viewfeedback
+	
+	@GetMapping("/viewfeedback")
+	public ResponseEntity<List<FeedBack>> viewFeedback()
+	{
+		List<FeedBack> viewfeedback = adServe.viewFeedbacks();
+		return new ResponseEntity(viewfeedback, HttpStatus.OK);
+		
+	}
+	
+	//http://localhost:8091/onlinevegetableshopping/admin/vieworder
+	@GetMapping("/vieworder")
+	public ResponseEntity<List<Order>> viewOrders()
+	{
+		List<Order> viewOrder = adServe.viewOrders();
+		return new ResponseEntity(viewOrder,HttpStatus.OK);
+		
+	}
+	
+	
+	
+	
+	
+	
+
 	
 	
 

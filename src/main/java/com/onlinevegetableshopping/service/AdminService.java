@@ -4,6 +4,11 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.onlinevegetableshopping.model.FeedBack;
+import com.onlinevegetableshopping.model.Order;
+import com.onlinevegetableshopping.model.RaiseComplaint;
+import com.onlinevegetableshopping.model.Vegetable;
+
 @Service
 public interface AdminService {
 	
@@ -13,11 +18,13 @@ public interface AdminService {
 	
 //	public List<User> getAllUsers();
 //	public List<User> getAllOrders();
-//	public List<VegetableList> addVegetables();
-//	public List<VegetableList> updateVegetables();
-//	public List<VegetableList> deleteVegetables();
-//	public List<RaisedComplaints> viewComplaints();
-//	public Lis<Feedback> getFeedbackByUser();
+	public List<Vegetable> getAllVegtable();
+	public Vegetable addVegetables(Vegetable vegetable);
+	public Vegetable updateVegetables(Vegetable vegetable);
+	public Vegetable deleteVegetables(int id);
+	public List<RaiseComplaint> viewComplaints();
+	public List<FeedBack> viewFeedbacks();
+	public List<Order> viewOrders();
 	
 	
 	

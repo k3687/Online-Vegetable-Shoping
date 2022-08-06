@@ -3,10 +3,19 @@ package com.onlinevegetableshopping.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import com.online_vegetable_shopping.dao.AdminRepository;
+import com.onlinevegetableshopping.dao.AdminRepository;
+import com.onlinevegetableshopping.dao.FeedbackRepository;
+import com.onlinevegetableshopping.dao.OrderRepository;
+import com.onlinevegetableshopping.dao.RaiseCompliantRepository;
+import com.onlinevegetableshopping.dao.VegetableRepository;
+import com.onlinevegetableshopping.model.FeedBack;
+import com.onlinevegetableshopping.model.Order;
+import com.onlinevegetableshopping.model.RaiseComplaint;
+import com.onlinevegetableshopping.model.Vegetable;
 
-
+@Service
 public class AdminServiceImpl implements AdminService{
 
 	/*
@@ -15,48 +24,68 @@ public class AdminServiceImpl implements AdminService{
 	 */
 	
 	@Autowired
-	private AdminRepository adRepo;
+	private VegetableRepository vegRepo;
 	
+	@Autowired
+	private RaiseCompliantRepository raiseRepo;
+	
+	@Autowired
+	private FeedbackRepository feedbackRepo;
+	
+	@Autowired
+	private OrderRepository orderRepo;
+
 	@Override
-	public List<User> getAllUsers() {
+	public Vegetable addVegetables(Vegetable vegetable) {
+		Vegetable veg= vegRepo.saveAndFlush(vegetable);
+		return veg;
+	}
+
+	@Override
+	public Vegetable deleteVegetables(int id) {
 		
+		 vegRepo.deleteById(id);
 		return null;
 	}
 
 	@Override
-	public List<User> getAllOrders() {
+	public Vegetable updateVegetables(Vegetable vegetable) {
+		Vegetable Updatedvegetable = vegRepo.saveAndFlush(vegetable);
+		return Updatedvegetable;
+	}
+
+	@Override
+	public List<Vegetable> getAllVegtable() {
 		
-		return null;
+		return vegRepo.findAll();
 	}
 
 	@Override
-	public List<VegetableList> addVegetables() {
+	public List<RaiseComplaint> viewComplaints() {
 		
-		return null;
+		return raiseRepo.findAll();
 	}
 
 	@Override
-	public List<VegetableList> updateVegetables() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<VegetableList> deleteVegetables() {
+	public List<FeedBack> viewFeedbacks() {
 		
-		return null;
+		return feedbackRepo.findAll();
 	}
 
 	@Override
-	public List<RaisedComplaints> viewComplaints() {
+	public List<Order> viewOrders() {
 		
-		return null;
+		return orderRepo.findAll();
 	}
 
-	@Override
-	public Lis<Feedback> getFeedbackByUser() {
-		
-		return null;
-	}
+	
 
+	
+
+	
+	
+	
+	
+	
+	
 }

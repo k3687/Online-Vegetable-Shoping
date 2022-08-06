@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan("com.online_vegetable_shopping")
+@ComponentScan(basePackages = "com.onlinevegetableshopping")
 public class OnlineVegetableShoppingApplication {
 
 	public static void main(String[] args) {
