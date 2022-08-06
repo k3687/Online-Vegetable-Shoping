@@ -28,6 +28,12 @@ public class AdminController {
 	@Autowired
 	private AdminService adServe;
 	
+	/*
+	 *  Controller for the requests related to the Vegetable store
+	 */	
+	
+	//requests the controller to add vegetable in vegetable store
+	
 	//http://localhost:8091/onlinevegetableshopping/admin/addveg
 	
 	@PostMapping("/addveg")  
@@ -38,14 +44,19 @@ public class AdminController {
 		
 	}
 	
+	//requests the controller to delete by vegetable id in vegetable store
+
 	//http://localhost:8091/onlinevegetableshopping/admin/deleteById/
 
-	@DeleteMapping("/deleteById/{id}") 	public ResponseEntity<Vegetable> deleteVegById(@PathVariable("id") Integer id)
+	@DeleteMapping("/deleteById/{id}") 	
+	public ResponseEntity<Vegetable> deleteVegById(@PathVariable("id") Integer id)
 	{
 		adServe.deleteVegetables(id);
 		return new ResponseEntity("Vegetable Deleted",HttpStatus.OK);
 		
 	}
+	
+	//requests the controller to update vegetable in vegetable store
 
 	//http://localhost:8091/onlinevegetableshopping/admin/update/
 	
@@ -58,6 +69,8 @@ public class AdminController {
 		
 	}
 	
+	//requests the controller to get all vegetable from vegetable store
+
 	//http://localhost:8091/onlinevegetableshopping/admin/allveg
 	
 	@GetMapping("/allveg") 
@@ -71,6 +84,12 @@ public class AdminController {
 		
 	}
 	
+	/*
+	 *  Controller for the requests related to the Raise Complaint
+	 */
+	
+	//requests the controller to view all complaint raised by user
+
 	//http://localhost:8091/onlinevegetableshopping/admin/viewallraise
 	
 	@GetMapping("/viewallraise")
@@ -80,6 +99,11 @@ public class AdminController {
 		return new ResponseEntity<List<RaiseComplaint>>(raisecomp, HttpStatus.OK);
 		
 	}
+	
+	/*
+	 *  Controller for the requests related to the feedback
+	 */
+	//requests the controller to view all feedback given by user
 	
 	//http://localhost:8091/onlinevegetableshopping/admin/viewfeedback
 	
@@ -91,6 +115,11 @@ public class AdminController {
 		
 	}
 	
+	/*
+	 *  Controller for the requests related to the Order
+	 */
+	//requests the controller to view all order by user
+
 	//http://localhost:8091/onlinevegetableshopping/admin/vieworder
 	@GetMapping("/vieworder")
 	public ResponseEntity<List<Order>> viewOrders()

@@ -26,6 +26,12 @@ public class UserController {
 	
 	@Autowired
 	private UserService userServe;
+	/*
+	 *  Controller for the requests related to the Feedback
+	 */	
+	
+	//requests the controller to give Feedback
+	
 	
 	 //http://localhost:8091/onlinevegetableshopping/user/givefeedback
 	
@@ -36,6 +42,11 @@ public class UserController {
 		return new ResponseEntity("Feedback Recorded",HttpStatus.OK);
 		
 	}
+	
+	/*
+	 *  Controller for the requests related to the vegetable store
+	 */	
+	//requests the controller to view all vegetables
 
 	//http://localhost:8091/onlinevegetableshopping/user/allveg
 
@@ -48,6 +59,12 @@ public class UserController {
 		
 	}
 	
+	/*
+	 *  Controller for the requests related to the cart
+	 */
+	
+	//requests the controller to add vegetables to Cart
+
 	//http://localhost:8091/onlinevegetableshopping/user/addVegtocart
 	
 	@PostMapping("/addVegtocart") 
@@ -57,6 +74,8 @@ public class UserController {
 		return new ResponseEntity(carts, HttpStatus.OK) ;
 		
 	}
+	
+	//requests the controller to view Cart
 	
 	//http://localhost:8091/onlinevegetableshopping/user/viewcart
 	
@@ -68,6 +87,25 @@ public class UserController {
 		
 	}
 	
+	//requests the controller to delete vegetable by id in cart 
+
+	//http://localhost:8091/onlinevegetableshopping/user/deletebyvegid
+	
+	@DeleteMapping("/deletebyvegid/{veg_id}")
+	public ResponseEntity<Cart> deleteById(@PathVariable("veg_id") Integer veg_id)
+	{
+		userServe.deleteVegetablebyId(veg_id);
+		return new ResponseEntity("Successfully deleted from cart ", HttpStatus.OK);
+		
+	}
+
+	/*
+	 *  Controller for the requests related to the raiseCompliant
+	 */
+	
+	//requests the controller to raise Compliant
+
+	
 	//http://localhost:8091/onlinevegetableshopping/user/raise
 	@PostMapping("/raise")
 	public ResponseEntity<RaiseComplaint> raiseCompliant(@RequestBody RaiseComplaint raisecompliant)
@@ -77,15 +115,7 @@ public class UserController {
 		
 	}
 	
-	//http://localhost:8091/onlinevegetableshopping/user/deletebyvegid
-
-	@DeleteMapping("/deletebyvegid/{veg_id}")
-	public ResponseEntity<Cart> deleteById(@PathVariable("veg_id") Integer veg_id)
-	{
-		userServe.deleteVegetablebyId(veg_id);
-		return new ResponseEntity("Successfully deleted from cart ", HttpStatus.OK);
-		
-	}
+	
 	
 	
 	

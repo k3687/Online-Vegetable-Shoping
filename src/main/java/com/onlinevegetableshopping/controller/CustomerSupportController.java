@@ -22,6 +22,12 @@ public class CustomerSupportController {
 	@Autowired
 	private CustomerSupportService customerserve;
 	
+	/*
+	 *  Controller for the requests related to the Raise Complaint
+	 */	
+	
+	//requests the controller to add vegetable in vegetable store
+	
 	//http://localhost:8091/onlinevegetableshopping/customersupport/viewallraisecomplaints
 	
 	@GetMapping("/viewallraisecomplaints")
@@ -32,6 +38,8 @@ public class CustomerSupportController {
 		
 	}
 	
+	//requests the controller to fix complaint By Id
+
 	//http://localhost:8091/onlinevegetableshopping/customersupport/solveraisecomplaints/
 
 	@GetMapping("/solveraisecomplaints/{compliantId}")

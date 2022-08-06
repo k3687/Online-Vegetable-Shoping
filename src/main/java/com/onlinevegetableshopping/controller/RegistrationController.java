@@ -18,6 +18,12 @@ public class RegistrationController {
 	@Autowired
 	private RegistrationService regServe;
 	
+	/*
+	 *  Controller for the requests related to the User
+	 */	
+	
+	//requests the controller to add users
+	
 	//http://localhost:8091/onlinevegetableshopping/registration/adduser
 	
 	@PostMapping("/adduser")

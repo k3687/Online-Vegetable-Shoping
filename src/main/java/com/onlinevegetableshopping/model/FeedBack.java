@@ -44,25 +44,41 @@ public class FeedBack {
 		this.description = description;
 	}
 
-
+	/**
+	 * gets the Feedback Id
+	 * 
+	 * @return
+	 */
 
 	public int getFeedbackId() {
 		return feedbackId;
 	}
 
-
+	/**
+	 * setters for the feedBack Id
+	 * 
+	 * @param feedbackId
+	 */
 
 	public void setFeedbackId(int feedbackId) {
 		this.feedbackId = feedbackId;
 	}
 
 
-
+	/**
+	 * gets the feedback description
+	 * 
+	 * @return
+	 */
 	public String getDescription() {
 		return description;
 	}
 
-
+	/**
+	 * setters for the feedback description
+	 * 
+	 * @param description
+	 */
 
 	public void setDescription(String description) {
 		this.description = description;

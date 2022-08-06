@@ -10,11 +10,17 @@ import com.onlinevegetableshopping.model.User;
 @Service
 public class RegistrationServiceImpl implements RegistrationService{
 
+	// connecting the service implementation with the Registration repository
+
 	@Autowired
 	private RegistrationRepository regRepo;
 	
+	// connecting the service implementation with the User repository
+
 	@Autowired
 	private UserRepository useRepo;
+	
+	// method implementing to add user
 
 	@Override
 	public User regUser(User user) {
