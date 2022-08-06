@@ -26,6 +26,7 @@ public class UserController {
 	
 	@Autowired
 	private UserService userServe;
+	
 	/*
 	 *  Controller for the requests related to the Feedback
 	 */	
