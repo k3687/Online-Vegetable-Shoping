@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import com.onlinevegetableshopping.model.RaiseComplaint;
 
 @Repository
-public interface RaiseCompliantRepository extends JpaRepository<RaiseComplaint, Integer>{
+public interface RaiseComplaintRepository extends JpaRepository<RaiseComplaint, Integer>{
 
 }

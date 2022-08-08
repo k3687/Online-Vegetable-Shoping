@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.onlinevegetableshopping.dao.RaiseCompliantRepository;
+import com.onlinevegetableshopping.dao.RaiseComplaintRepository;
 import com.onlinevegetableshopping.model.RaiseComplaint;
 
 @Service
@@ -14,7 +14,7 @@ public class CustomerSupportServiceImpl implements CustomerSupportService {
 	// connecting the service implementation with the RaiseCompliant repository
 
 	@Autowired
-	private RaiseCompliantRepository raiseRepo;
+	private RaiseComplaintRepository raiseRepo;
 	
 	
 	// method implementing to view all complaints

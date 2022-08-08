@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.onlinevegetableshopping.dao.CartRepository;
 import com.onlinevegetableshopping.dao.FeedbackRepository;
-import com.onlinevegetableshopping.dao.RaiseCompliantRepository;
+import com.onlinevegetableshopping.dao.RaiseComplaintRepository;
 import com.onlinevegetableshopping.dao.UserRepository;
 import com.onlinevegetableshopping.dao.VegetableRepository;
 import com.onlinevegetableshopping.model.Cart;
@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
 	// connecting the service implementation with the Raise Compliant repository
 
 	@Autowired
-	private RaiseCompliantRepository raiseRepo;
+	private RaiseComplaintRepository raiseRepo;
 
 	// method implementing to give feedback
 

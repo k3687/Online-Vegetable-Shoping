@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.onlinevegetableshopping.dao.AdminRepository;
 import com.onlinevegetableshopping.dao.FeedbackRepository;
 import com.onlinevegetableshopping.dao.OrderRepository;
-import com.onlinevegetableshopping.dao.RaiseCompliantRepository;
+import com.onlinevegetableshopping.dao.RaiseComplaintRepository;
 import com.onlinevegetableshopping.dao.VegetableRepository;
 import com.onlinevegetableshopping.model.FeedBack;
 import com.onlinevegetableshopping.model.Order;
@@ -28,7 +28,7 @@ public class AdminServiceImpl implements AdminService{
 	// connecting the service implementation with the RaiseCompliant repository
 
 	@Autowired
-	private RaiseCompliantRepository raiseRepo;
+	private RaiseComplaintRepository raiseRepo;
 	
 	// connecting the service implementation with the Feedback repository
 

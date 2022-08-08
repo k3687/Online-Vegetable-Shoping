@@ -20,11 +20,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  *
  */
 @Entity
-@Table(name="raisecompliant")
+@Table(name="raisecomplaint")
 public class RaiseComplaint {
 	
 	@Id
-	@Column(name="complaint_id")
+	@Column(name="compliant_id")
 	private int compliantId;
 	@Column(name="compliant_description")
 	private String description;
