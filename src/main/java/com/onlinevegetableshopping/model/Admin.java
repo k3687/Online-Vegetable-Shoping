@@ -1,14 +1,21 @@
 package com.onlinevegetableshopping.model;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 /**
  * The Class Admin is the Entity representing Admin table in database
  * 
- * @author Team4
+ * @author Inamdar Akhil
  *
  */
 
@@ -22,6 +29,7 @@ public class Admin {
 	private String adminName;
 	@Column(name="admin_password")
 	private String adminPassword;
+	
 	
 	/**
 	 * Admin default constructor
@@ -37,7 +45,10 @@ public class Admin {
 	 * @param adminId      the admin Id
 	 * @param adminName      the  name of admin
 	 * @param adminPassword   the password of admin
+	 * @param vegetable   the add vegetables by admin
 	 */
+
+
 
 	public Admin(int adminId, String adminName, String adminPassword) {
 		super();
@@ -102,14 +113,11 @@ public class Admin {
 		this.adminPassword = adminPassword;
 	}
 
+
 	@Override
 	public String toString() {
 		return "Admin [adminId=" + adminId + ", adminName=" + adminName + ", adminPassword=" + adminPassword + "]";
 	}
-	
-	
-	
-	
-	
+
 
 }

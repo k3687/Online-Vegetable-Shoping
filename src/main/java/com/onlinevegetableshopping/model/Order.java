@@ -16,44 +16,46 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 /**
  * The Class Order is the Entity representing Order table in database
  * 
- * @author Team4
+ * @author Kavya
+
+
+
  *
  */
 @Entity
-@Table(name="orderdetails")
+@Table(name = "orderdetails")
 public class Order {
-	
+
 	@Id
-	@Column(name="order_id")
+	@Column(name = "order_id")
 	private int orderId;
-	@Column(name="deliver_status")
+	@Column(name = "deliver_status")
 	private String deliverStatus;
-	@Column(name="payment_status")
+	@Column(name = "payment_status")
 	private String paymentStatus;
-	
-	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	@ManyToOne(targetEntity = Cart.class)
 	@Fetch(FetchMode.JOIN)
-	@JoinColumn(name = "cartuser_id")
+	@JoinColumn(name = "cart_id")
 	private Cart cart;
-
+	
 	/**
 	 * Order default constructor
 	 */
 	public Order() {
 		super();
-		
+
 	}
-	
+
 	/**
 	 * Order constructor with fields as parameters
 	 * 
-	 * @param orderId      the order Id
-	 * @param deliverStatus      the status of order
-	 * @param paymentStatus  the status of payment
-	 * @param cart            the cart of order
+	 * @param orderId       the order Id
+	 * @param deliverStatus the status of order
+	 * @param paymentStatus the status of payment
+	 * @param cart          the cart of order
 	 */
-
 
 	public Order(int orderId, String deliverStatus, String paymentStatus, Cart cart) {
 		super();
@@ -63,7 +65,6 @@ public class Order {
 		this.cart = cart;
 	}
 
-	
 	/**
 	 * gets the Order Id
 	 * 
@@ -81,7 +82,7 @@ public class Order {
 	public void setOrderId(int orderId) {
 		this.orderId = orderId;
 	}
-	
+
 	/**
 	 * gets the deliverstatus of order
 	 * 
@@ -91,7 +92,7 @@ public class Order {
 	public String getDeliverStatus() {
 		return deliverStatus;
 	}
-	
+
 	/**
 	 * setters for the deliverstatus
 	 * 
@@ -120,7 +121,6 @@ public class Order {
 		this.paymentStatus = paymentStatus;
 	}
 
-	
 	/**
 	 * gets the cart of order
 	 * 
@@ -144,18 +144,5 @@ public class Order {
 		return "Order [orderId=" + orderId + ", deliverStatus=" + deliverStatus + ", paymentStatus=" + paymentStatus
 				+ ", cart=" + cart + "]";
 	}
-	
-	
-	
-	
-	
-
-	
-	 	
-	
-	
-	
-	
-	
 
 }

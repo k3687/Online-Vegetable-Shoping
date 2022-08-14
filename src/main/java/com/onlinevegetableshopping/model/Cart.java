@@ -21,7 +21,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 /**
  * The Class Cart is the Entity representing Cart table in database
  * 
- * @author Team4
+ * @author Salunke, Sanjana
+
+
+
  *
  */
 
@@ -31,7 +34,7 @@ public class Cart implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="cartuser_id")
+	@Column(name="cart_id")
 	private int cartuserId;
 	@Column(name="total_bill")
 	private int totalBill;
@@ -43,6 +46,8 @@ public class Cart implements Serializable{
 	@Fetch(FetchMode.JOIN)
 	@JoinColumn(name = "veg_id")
 	private Vegetable vegetables;
+    
+    
     
 
     /**
@@ -63,13 +68,13 @@ public class Cart implements Serializable{
 	 * @param vegetables   the vegetables of cart
 	 */
 
-public Cart(int cartuserId, int totalBill, String invoice, Vegetable vegetables) {
-	super();
-	this.cartuserId = cartuserId;
-	this.totalBill = totalBill;
-	this.invoice = invoice;
-	this.vegetables = vegetables;
-}
+    public Cart(int cartuserId, int totalBill, String invoice, Vegetable vegetables) {
+		super();
+		this.cartuserId = cartuserId;
+		this.totalBill = totalBill;
+		this.invoice = invoice;
+		this.vegetables = vegetables;
+	}
 
 /**
  * gets the Cart Id
@@ -80,6 +85,9 @@ public Cart(int cartuserId, int totalBill, String invoice, Vegetable vegetables)
 public int getCartuserId() {
 	return cartuserId;
 }
+
+
+
 
 /**
  * setters for the Cart Id
@@ -137,18 +145,23 @@ public Vegetable getVegetables() {
 	return vegetables;
 }
 
+
+
 /**
  * setters for the cart vegetables
  * 
  * @param vegetables
  */
+
 public void setVegetables(Vegetable vegetables) {
 	this.vegetables = vegetables;
 }
 
+
 public static long getSerialversionuid() {
 	return serialVersionUID;
 }
+
 
 
 @Override
@@ -156,7 +169,11 @@ public String toString() {
 	return "Cart [cartuserId=" + cartuserId + ", totalBill=" + totalBill + ", invoice=" + invoice + ", vegetables="
 			+ vegetables + "]";
 }
-    
+
+
+
+
+
 
 
 

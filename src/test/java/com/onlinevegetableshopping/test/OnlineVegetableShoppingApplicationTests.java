@@ -12,6 +12,7 @@ import java.util.stream.Stream;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -32,6 +33,7 @@ import com.onlinevegetableshopping.model.RaiseComplaint;
 import com.onlinevegetableshopping.model.User;
 import com.onlinevegetableshopping.model.Vegetable;
 import com.onlinevegetableshopping.service.AdminService;
+import com.onlinevegetableshopping.service.CustomerSupportService;
 import com.onlinevegetableshopping.service.RegistrationServiceImpl;
 import com.onlinevegetableshopping.service.UserService;
 
@@ -40,7 +42,9 @@ import com.onlinevegetableshopping.service.UserService;
 @SpringBootTest(classes=OnlineVegetableShoppingApplication.class)
 class OnlineVegetableShoppingApplicationTests {
 
-
+	@Autowired
+	private CustomerSupportService custServe;
+	
 	@Autowired
 	private AdminService adminServe;
 	
@@ -66,6 +70,7 @@ class OnlineVegetableShoppingApplicationTests {
 	
 	@MockBean
 	private OrderRepository orderRepo;
+	
 	
 	
 	/*
@@ -117,6 +122,40 @@ class OnlineVegetableShoppingApplicationTests {
 	}
 	
 	
+	/*
+     * Test Cases for User
+     */
+
+    @Test
+    public void testViewAllVegtable() {
+        when(vegRepo.findAll()).thenReturn(Stream.of(new Vegetable(111, "Pumkin", 15, 1)).collect(Collectors.toList()));
+        assertEquals(1, userServe.viewAllVegtable().size());
+    }
+
+    @Test
+    public void testViewCart() {
+        Vegetable veg = new Vegetable(112, "Cucumber", 10, 2);
+        when(cartRepo.findAll()).thenReturn(Stream.of(new Cart(11, 10, "R234", veg)).collect(Collectors.toList()));
+        assertEquals(1, userServe.viewCart().size());
+    }
+    
+    /*
+     * Test for CustomerSupportService
+     */
+
+    @Test
+    public void testViewComplaints() {
+        User user = new User(12, "Vishesh", "V@234");
+        when(complainRepo.findAll()).thenReturn(Stream.of(new RaiseComplaint(11, "Bad", user)).collect(Collectors.toList()));
+        assertEquals(1, custServe.viewComplaints().size());
+    }
+
+    @Test
+    public void testSolveCompaints() {
+        User user = new User();
+        when(complainRepo.findById(12)).thenReturn(Stream.of(new RaiseComplaint(11, "Bad", user)).collect(Collectors.toList()));
+        assertEquals(1, custServe.solveCompaints(12));
+    }
 	
 	
 	
@@ -142,71 +181,7 @@ class OnlineVegetableShoppingApplicationTests {
 	
 	
 	
-	
-	
-	
-//	@Test
-//	public void updateVegetable()
-//	{
-//		Vegetable vegetable = new Vegetable(1,"Spinach",20,1);
-//	
-//		when(vegRepo.saveAndFlush(vegetable))
-//		.thenReturn((Vegetable) Stream.of(vegetable).collect(Collectors.toList()));
-//		assertEquals(1,adminServe.updateVegetables(vegetable));
-//		
-//	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-//	@Test
-//	public void addVegetableToCart()
-//	{
-//		Vegetable vegetable = new Vegetable();
-//		
-//		Cart cart = new Cart(1,100,"Process",vegetable);
-//		when(cartRepo.save(cart)).thenReturn(cart);
-//		assertEquals(cart, userServe.addvegetableToCart(cart));
-//		
-//	}
-	
-//	@Test
-//	public void addVegetables()
-//	{
-//		
-//		Vegetable vegetable = new Vegetable(20,"Onion",40,1);
-//
-//		when(vegRepo.saveAndFlush(vegetable))
-//	.thenReturn((Vegetable) Stream.of(vegetable).collect(Collectors.toList()));
-//		assertEquals(1, ((List<Vegetable>) adminServe.addVegetables(vegetable)).size());
-//				
-//	
-//	}
-	
+
 
 	
 

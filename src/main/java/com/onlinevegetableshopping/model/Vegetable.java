@@ -2,13 +2,21 @@ package com.onlinevegetableshopping.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * The Class Vegetable is the Entity representing Vegetables table in database
  * 
- * @author Team4
+ * @author Khan, Saif
  *
  */
 @Entity
@@ -24,7 +32,7 @@ public class Vegetable {
 	private int price;
 	@Column(name="veg_quantity")
 	private int quantity;
-	
+		
 	/**
 	 * Vegetable default constructor
 	 */
@@ -50,7 +58,7 @@ public class Vegetable {
 		this.price = price;
 		this.quantity = quantity;
 	}
-
+	
 	
 	/**
 	 * gets the id of vegetable
@@ -60,6 +68,10 @@ public class Vegetable {
 	public int getId() {
 		return id;
 	}
+
+	
+
+	
 
 	/**
 	 * setters for the id of vegetable
@@ -128,6 +140,8 @@ public class Vegetable {
 	public String toString() {
 		return "Vegetable [id=" + id + ", name=" + name + ", price=" + price + ", quantity=" + quantity + "]";
 	}
+
+	
 	
 	
 	

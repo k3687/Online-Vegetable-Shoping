@@ -5,11 +5,13 @@ import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
  * The Class Feedback is the Entity representing feedback table in database
  *
+ * @author Tejaswini Adiveppa
  */
 
 @Entity
@@ -20,6 +22,8 @@ public class FeedBack {
 	@Column(name = "feedback_id")
 	private int feedbackId;
 	private String description;
+	
+	
 	
 	
 	/**

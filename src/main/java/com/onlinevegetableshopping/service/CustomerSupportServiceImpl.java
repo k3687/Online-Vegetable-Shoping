@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.onlinevegetableshopping.dao.RaiseComplaintRepository;
+import com.onlinevegetableshopping.model.CustomerSupport;
 import com.onlinevegetableshopping.model.RaiseComplaint;
 
 @Service
@@ -25,13 +26,10 @@ public class CustomerSupportServiceImpl implements CustomerSupportService {
 		return raiseRepo.findAll();
 	}
 	
-	// method implementing to solve all complaints
 
-	@Override
-	public RaiseComplaint solveCompaints(int compliantId) {
 
-		RaiseComplaint solve = raiseRepo.getById(compliantId);
-		return solve;
-	}
+	
+
+	
 
 }

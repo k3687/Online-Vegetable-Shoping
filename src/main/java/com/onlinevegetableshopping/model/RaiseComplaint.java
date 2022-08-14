@@ -16,7 +16,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 /**
  * The Class RaiseComplaint is the Entity representing raisecompliant table in database
  * 
- * @author Team4
+ * @author Konasagar, Vijaykumar
+
+
+
  *
  */
 @Entity
@@ -24,16 +27,12 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class RaiseComplaint {
 	
 	@Id
-	@Column(name="compliant_id")
-	private int compliantId;
-	@Column(name="compliant_description")
+	@Column(name="complaint_id")
+	private int complaintId;
+	@Column(name="complaint_description")
 	private String description;
 	
-	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-	@ManyToOne(targetEntity = User.class)
-	@Fetch(FetchMode.JOIN)
-	@JoinColumn(name = "user_Id")
-	private User users;
+
 
 	
 	/**
@@ -52,11 +51,10 @@ public class RaiseComplaint {
 	 * @param users            the complaint of users
 	 */
 
-	public RaiseComplaint(int compliantId, String description, User users) {
+	public RaiseComplaint(int compliantId, String description) {
 		super();
-		this.compliantId = compliantId;
+		this.complaintId = compliantId;
 		this.description = description;
-		this.users = users;
 	}
 
 
@@ -66,7 +64,7 @@ public class RaiseComplaint {
 	 * @return
 	 */
 	public int getCompliantId() {
-		return compliantId;
+		return complaintId;
 	}
 
 	/**
@@ -75,7 +73,7 @@ public class RaiseComplaint {
 	 * @param complaintId
 	 */
 	public void setCompliantId(int compliantId) {
-		this.compliantId = compliantId;
+		this.complaintId = compliantId;
 	}
 
 	/**
@@ -97,30 +95,11 @@ public class RaiseComplaint {
 		this.description = description;
 	}
 
-	/**
-	 * gets the users
-	 * 
-	 * @return
-	 */
-
-	public User getUsers() {
-		return users;
-	}
-
-	/**
-	 * setters for the users
-	 * 
-	 * @param users
-	 */
-
-	public void setUsers(User users) {
-		this.users = users;
-	}
-
+	
 
 	@Override
 	public String toString() {
-		return "RaiseCompliant [compliantId=" + compliantId + ", description=" + description + ", users=" + users + "]";
+		return "RaiseCompliant [compliantId=" + complaintId + ", description=" + description +  "]";
 	}
 	
 	

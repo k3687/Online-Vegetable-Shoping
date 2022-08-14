@@ -16,8 +16,7 @@ public interface AdminService {
 	 * methods for managing the Admin
 	 */
 	
-//	public List<User> getAllUsers();
-//	public List<User> getAllOrders();
+
 	public List<Vegetable> getAllVegtable();
 	public Vegetable addVegetables(Vegetable vegetable);
 	public Vegetable updateVegetables(Vegetable vegetable);
