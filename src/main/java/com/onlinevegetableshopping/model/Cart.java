@@ -98,11 +98,8 @@ public void setCartuserId(int cartuserId) {
 	this.cartuserId = cartuserId;
 }
 
-/**
- * gets the cart totalbill
- * 
- * @return
- */
+
+
 public int getTotalBill() {
 	return totalBill;
 }

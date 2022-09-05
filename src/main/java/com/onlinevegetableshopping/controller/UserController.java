@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.onlinevegetableshopping.exception.VegetableIdNotFoundException;
 import com.onlinevegetableshopping.model.Cart;
 import com.onlinevegetableshopping.model.FeedBack;
 import com.onlinevegetableshopping.model.RaiseComplaint;
@@ -22,7 +23,7 @@ import com.onlinevegetableshopping.model.Vegetable;
 import com.onlinevegetableshopping.service.UserService;
 
 @RestController
-@CrossOrigin(origins="http://localhost:4200/")
+@CrossOrigin(origins ="*", allowedHeaders= "*")
 @RequestMapping("/user")
 public class UserController {
 	
@@ -36,7 +37,7 @@ public class UserController {
 	//requests the controller to give Feedback
 	
 	
-	 //http://localhost:8091/onlinevegetableshopping/user/givefeedback
+	 //http://localhost:8091/onlinevegetableshopping/user/feedback
 	
 	@PostMapping("/feedback") 
 	public ResponseEntity<FeedBack> giveFeedback(@RequestBody FeedBack feedback)
@@ -95,7 +96,7 @@ public class UserController {
 	//http://localhost:8091/onlinevegetableshopping/user/deletebyvegid
 	
 	@DeleteMapping("/deletebyvegid/{veg_id}")
-	public ResponseEntity<Cart> deleteById(@PathVariable("veg_id") Integer veg_id)
+	public ResponseEntity<Cart> deleteById(@PathVariable("veg_id") Integer veg_id) throws VegetableIdNotFoundException
 	{
 		userServe.deleteVegetablebyId(veg_id);
 		return new ResponseEntity("Successfully deleted from cart ", HttpStatus.OK);
@@ -115,6 +116,14 @@ public class UserController {
 	{
 		userServe.raiseCompliant(raisecompliant);
 		return new ResponseEntity("Compliant is Raised successfully", HttpStatus.OK);
+		
+	}
+	
+	//localhost:8091/onlinevegetableshopping/user/vegbyid/
+	@GetMapping("/vegbyid/{id}")
+	public ResponseEntity getVegById(@PathVariable("id") Integer id) throws VegetableIdNotFoundException {
+		Vegetable veg=userServe.getById(id);
+		return new ResponseEntity<Object>(veg,HttpStatus.OK);
 		
 	}
 	
